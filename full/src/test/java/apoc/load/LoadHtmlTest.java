@@ -37,6 +37,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Stream;
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.junit.After;
 import org.junit.Assert;
@@ -46,25 +47,6 @@ import org.junit.Test;
 import org.neo4j.graphdb.QueryExecutionException;
 import org.neo4j.test.rule.DbmsRule;
 import org.neo4j.test.rule.ImpermanentDbmsRule;
-
-import java.io.File;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Stream;
-
-import static apoc.load.LoadHtml.KEY_ERROR;
-import static apoc.util.MapUtil.map;
-import static apoc.util.TestUtil.testCall;
-import static apoc.util.TestUtil.testResult;
-import static java.util.Arrays.asList;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 public class LoadHtmlTest {
 
@@ -658,8 +640,10 @@ public class LoadHtmlTest {
         try {
             runnable.run();
         } catch (RuntimeException e) {
-            // The test don't fail if the current chrome/firefox version is incompatible or if the browser is not installed
-            Stream<String> notPresentOrIncompatible = Stream.of("cannot find Chrome binary",
+            // The test don't fail if the current chrome/firefox version is incompatible or if the browser is not
+            // installed
+            Stream<String> notPresentOrIncompatible = Stream.of(
+                    "cannot find Chrome binary",
                     "Cannot find firefox binary",
                     "browser start-up failure",
                     "This version of ChromeDriver only supports Chrome version");
