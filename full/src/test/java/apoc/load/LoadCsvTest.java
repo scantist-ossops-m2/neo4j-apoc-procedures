@@ -832,8 +832,8 @@ public class LoadCsvTest {
             assertEquals(expected.keySet(), actual.keySet());
 
             actual.forEach((key, value) -> {
-                if (value instanceof Map mapVal) {
-                    assertMapEquals((Map<String, Object>) expected.get(key), mapVal);
+                if (value instanceof Map) {
+                    assertMapEquals((Map<String, Object>) expected.get(key), (Map) value);
                 } else {
                     assertEquals(expected.get(key), value);
                 }
