@@ -223,7 +223,9 @@ For example, by executing a `CALL apoc.vectordb.milvus.query(...) YIELD metadata
 so that we do not return the other values that we do not need.
 ====
 
-
+// TODO - riportare l'esempio della issue https://github.com/neo4j-contrib/neo4j-apoc-procedures/issues/4091, 
+//  ma mettendo apoc.vectordb.milvus.query invece di apoc.vectordb.qdrant.query
+// dicendo "si possono utilizzare i vectordb insieme alla apoc.ml.rag, eseguendo una query come segue" 
 
 .Delete vectors (it leverages https://milvus.io/api-reference/restful/v2.4.x/v2/Vector%20(v2)/Delete.md[this API])
 [source,cypher]

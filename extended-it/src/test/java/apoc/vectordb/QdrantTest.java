@@ -177,6 +177,15 @@ public class QdrantTest {
                 });
     }
 
+    // TODO - METTERE uno unit test con l'esempio riportato nella issue, e vedere se funziona
+    //      se il risultato da un risultato poco sensato (probabile), 
+    //          per il momento pushalo facendo un println del risultato, poi lo vediamo
+    
+    // TODO - farlo anche in modo similare per ChromaDbTest, MilvusTest, WeaviateTest 
+    
+    // TODO - farlo anche per PineconeTest, che però non funzionerà sicuro, visto che richiede un account, 
+    //  ma ce lo mettiamo lo stesso, tanto viene ignorato sulla CI
+    
     @Test
     public void queryVectors() {
         testResult(db, "CALL apoc.vectordb.qdrant.query($host, 'test_collection', [0.2, 0.1, 0.9, 0.7], {}, 5, $conf)",
@@ -463,5 +472,7 @@ public class QdrantTest {
 
         assertNodesCreated(db);
     }
+    
+    
 
 }

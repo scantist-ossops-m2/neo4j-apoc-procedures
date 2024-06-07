@@ -778,3 +778,7 @@ CALL apoc.ml.rag("rag-rel-embeddings",
 ) YIELD value
 RETURN value
 ----
+
+
+//TODO - riportare l'esempio come nella issue https://github.com/neo4j-contrib/neo4j-apoc-procedures/issues/4091
+//  dicendo "si possono utilizzare i vectordb insieme alla apoc.ml.rag, eseguendo una query come segue"

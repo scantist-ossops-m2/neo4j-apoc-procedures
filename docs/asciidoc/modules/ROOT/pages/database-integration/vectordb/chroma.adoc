@@ -221,6 +221,10 @@ For example, by executing a `CALL apoc.vectordb.chroma.query(...) YIELD metadata
 so that we do not return the other values that we do not need.
 ====
 
+// TODO - riportare l'esempio della issue https://github.com/neo4j-contrib/neo4j-apoc-procedures/issues/4091, 
+//  ma mettendo apoc.vectordb.chroma.query invece di apoc.vectordb.qdrant.query
+// dicendo "si possono utilizzare i vectordb insieme alla apoc.ml.rag, eseguendo una query come segue" 
+
 .Delete vectors (it leverages https://docs.trychroma.com/usage-guide#deleting-data-from-a-collection[this API])
 [source,cypher]
 ----

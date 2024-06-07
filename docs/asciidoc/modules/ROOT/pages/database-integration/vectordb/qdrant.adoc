@@ -224,7 +224,7 @@ For example, by executing a `CALL apoc.vectordb.qdrant.query(...) YIELD metadata
 so that we do not return the other values that we do not need.
 ====
 
-
+// TODO - riportare lo stesso esempio messo in openai
 
 .Delete vectors (it leverages https://qdrant.github.io/qdrant/redoc/index.html#tag/points/operation/delete_vectors[this API])
 [source,cypher]

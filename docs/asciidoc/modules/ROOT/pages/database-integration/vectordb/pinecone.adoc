@@ -237,7 +237,9 @@ For example, by executing a `CALL apoc.vectordb.pinecone.query(...) YIELD metada
 so that we do not return the other values that we do not need.
 ====
 
-
+// TODO - riportare l'esempio della issue https://github.com/neo4j-contrib/neo4j-apoc-procedures/issues/4091, 
+//  ma mettendo apoc.vectordb.pinecone.query invece di apoc.vectordb.qdrant.query
+// dicendo "si possono utilizzare i vectordb insieme alla apoc.ml.rag, eseguendo una query come segue" 
 
 .Delete vectors (it leverages https://docs.pinecone.io/reference/api/data-plane/delete[this API])
 [source,cypher]
