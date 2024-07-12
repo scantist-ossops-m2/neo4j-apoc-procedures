@@ -68,6 +68,10 @@ public class OpenAI {
         // we remove these keys from config, since the json payload is calculated starting from the config map
         Stream.of(ENDPOINT_CONF_KEY, API_TYPE_CONF_KEY, API_VERSION_CONF_KEY, APIKEY_CONF_KEY).forEach(config::remove);
         
+        // todo - vedere la pagina https://docs.anthropic.com/en/api/messages-examples
+        
+        // todo - non so se è necessarion aggiungere un case, controllare se il body è diverso da quello delle openai, non credo
+        //      
         switch (type) {
             case MIXEDBREAD_CUSTOM -> {
                 // no payload manipulation, taken from the configuration as-is
@@ -76,6 +80,9 @@ public class OpenAI {
                 config.putIfAbsent("inputs", inputs);
                 jsonPath = "$[0]";
             }
+//            case ANTHROPIC -> {
+//                path = 
+//            }
             default -> {
                 config.putIfAbsent(MODEL_CONF_KEY, model);
                 config.put(key, inputs);
@@ -89,7 +96,25 @@ public class OpenAI {
         
         final Map<String, Object> headers = new HashMap<>();
         headers.put("Content-Type", "application/json");
+        
+        // todo - probabilmente fare l'override di addApiKey(...) nella classe Anthropic
+        //  in cui invece di fare headers.put("Authorization", "Bearer " + apiKey); come fatto in nella `static class OpenAi extends OpenAIRequestHandler `
+        //  va fatto qualcosa tipo headers.put("x-api-key", apiKey)
+        
         apiType.addApiKey(headers, apiKey);
+        
+        // todo - scrivere che if type == ANTHROPIC, allora faccio headers.put("anthropic-version", "2023-06-01")
+        //  che è quello che mette qui tra gli header https://docs.anthropic.com/en/api/messages-examples#putting-words-in-claudes-mouth
+        
+        
+        // TODO - creare una nuova chiave di configurazione "headers" da mettere in MLUtils.java
+        //      nel caso uno voglia mettere degli headers diversi
+        //      aggiornare docs: openai.adoc 
+        Map headersConf = (Map) config.remove("headers");
+        if (headersConf != null) {
+            headers.putAll(headersConf);
+        }
+
 
         String payload = JsonUtil.OBJECT_MAPPER.writeValueAsString(config);
         

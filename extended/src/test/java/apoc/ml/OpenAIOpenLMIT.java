@@ -36,6 +36,26 @@ public class OpenAIOpenLMIT {
     public void setUp() throws Exception {
         TestUtil.registerProcedure(db, OpenAI.class);
     }
+    
+    
+    /* todo - esempio simile a completionWithHuggingFace, 
+          dove invece delle prime due righe andrà scritta una cosa simile ma con `ANTHROPIC_API_KEY`, che dovrà essere passato nel Modify run configuration
+          La configurazione dovrebbe essere questa:
+            Map<String, String> conf = Map.of(API_TYPE_CONF_KEY, OpenAIRequestHandler.Type.ANTHROPIC.name());
+          
+        
+       todo - esempio in cui viene passato nel config "model": "modelloDiversoDaQuelloDiDefault"
+       
+       todo - esempio in cui viene passato nel config "model": "modelloInesistente" --> dovrebbe fallire?
+       
+       todo -  esempio in cui viene passato nel config "max_tokens": numeroPiccolo --> il result dovrebbe essere diverso da quello senza max_tokens
+       
+       todo -  esempio in cui viene passato nel config headers: {anthropic-version: 'ANNO-MM-GG'}, dovrebbe andare 
+       
+       todo -  esempio in cui viene passato nel config headers: {anthropic-version: 'ajeje'}, dovrebbe spaccare visto che non in formato YYYY-MM-DD
+       
+       todo - vedere se testare altri casi, forse questo con stream:true --> https://docs.anthropic.com/en/api/messages-streaming  
+    */
 
     /**
      * Request converter similar to: https://github.com/r2d4/openlm/blob/main/openlm/llm/huggingface.py
